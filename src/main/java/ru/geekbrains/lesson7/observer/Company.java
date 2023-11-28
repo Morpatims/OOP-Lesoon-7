@@ -7,11 +7,8 @@ public class Company {
     private Random random = new Random();
 
     private String name;
-
     private Publisher jobAgency;
-
     private int maxSalary;
-
 
     public Company(String name, Publisher jobAgency, int maxSalary) {
         this.name = name;
@@ -19,9 +16,9 @@ public class Company {
         this.maxSalary = maxSalary;
     }
 
-    public void needEmployee(){
+    public void publishVacancy(String title, JobType jobType) {
         int salary = random.nextInt(maxSalary);
-        jobAgency.sendOffer(name, salary);
+        Vacancy vacancy = new Vacancy(title, jobType, salary);
+        jobAgency.sendOffer(name, vacancy);
     }
-
 }

@@ -7,7 +7,6 @@ public class JobAgency implements Publisher {
 
     private Collection<Observer> observers = new ArrayList<>();
 
-
     @Override
     public void registerObserver(Observer observer) {
         observers.add(observer);
@@ -19,9 +18,9 @@ public class JobAgency implements Publisher {
     }
 
     @Override
-    public void sendOffer(String companyName, int salary) {
-        for (Observer observer : observers){
-            observer.receiveOffer(companyName, salary);
+    public void sendOffer(String companyName, Vacancy vacancy) {
+        for (Observer observer : observers) {
+            observer.receiveOffer(companyName, vacancy);
         }
     }
 }

@@ -2,16 +2,6 @@ package ru.geekbrains.lesson7.observer;
 
 public class Program {
 
-    /**
-     *  TODO: Доработать приложение, которое разрабатывалось на семинаре,
-     *  поработать с шаблоном проектирования Observer,
-     *  добавить новый тип соискателя.
-     *  Добавить новую сущность "Вакансия", компания должна рассылать вакансии.
-     *  Только после этого вы можете усложнить ваше приложение (при желании), например,
-     *  добавить тип вакансии (enum),
-     *  учитывать тип вакансии при отправке предложения соискателю.
-     * @param args
-     */
     public static void main(String[] args) {
         Publisher publisher = new JobAgency();
         Company google = new Company("Google", publisher, 120000);
@@ -21,17 +11,17 @@ public class Program {
         Student student1 = new Student("Студент #1");
         Master master1 = new Master("Мастер #1");
         Master master2 = new Master("Мастер #2");
+        JobSeeker jobSeeker1 = new JobSeeker("Соискатель #1");
 
         publisher.registerObserver(student1);
         publisher.registerObserver(master1);
         publisher.registerObserver(master2);
+        publisher.registerObserver(jobSeeker1);
 
-        for (int i = 0; i < 3; i++){
-            google.needEmployee();
-            yandex.needEmployee();
-            geekBrains.needEmployee();
+        for (int i = 0; i < 3; i++) {
+            google.publishVacancy("Java Developer", JobType.FULL_TIME);
+            yandex.publishVacancy("Web Developer", JobType.PART_TIME);
+            geekBrains.publishVacancy("Intern", JobType.INTERNSHIP);
         }
-
     }
-
 }
